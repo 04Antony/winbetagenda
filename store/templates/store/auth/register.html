@@ -1,0 +1,887 @@
+{% extends 'store/layouts/main.html' %}
+
+{% block content %}
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head id="layouthead">
+<meta >
+
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+
+<meta name="description" content="A sports betting company that offers the best oods.">
+
+
+<meta name="theme-color" content="rgb(3, 2, 33)">
+<title>PESABET| Sports betting site</title>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel="stylesheet" href="/static/css/s.min.css">
+
+<link rel="stylesheet" href="/static/css/s2.min.css">
+
+<script src="/static/js/g.js"></script>
+
+
+
+<script src="/static/js/splide.min.js" async></script>
+<script src="/static/js/g.min.js" async></script>
+<script src="/static/js/local.js" async></script>
+
+
+
+
+
+<title>WINBETAGENDA| All Sports betting company</title>
+</head>
+
+
+
+<body id="body">
+
+
+<div class='SB-Lite-Mobile'>
+<div class='SB-layout-header' >
+
+<div class="SB-topHeader d-none">
+<div class="SB-container ">
+<div class="SB-topHeader-leftSection SB-hide-mobile SB-show-desktop d-none">
+<div id="dateTime"></div>
+</div>
+<div class="SB-topHeader-middleSection">
+
+<div class="SB-iconSvg d-none">
+
+    
+
+</div>
+</div>
+<div class="SB-topHeader-rightSection SB-hide-mobile SB-show-desktop d-none">
+<div class="SB-topHeader-rightSection-container">
+<div class="SM-rightSection-item">
+<div class="SB-select SB-language SB-selectTransparent SB-selectAuto">
+<select>
+<option>English</option>
+<option>Portuguese</option>
+</select>
+</div>
+</div>
+<div class="SM-rightSection-item">
+<div class="SB-select SB-oddsType SB-selectTransparent SB-selectAuto">
+<select>
+<option>Decimal</option>
+<option>Fractional</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="SB-mainHeader" style="background-color: rgb(3, 2, 33);color: #009578;">
+<div class="SB-container">
+<div class="SB-mainHeader-container">
+<div class="SB-mainHeader-leftSection">
+<div class="SB-select SB-selectSideMenu">
+<select id="ddFeaturedSidemenu" onchange="getSidemenuFeaturedphone(value)">
+<option value="">Menu</option>
+<option value="azsports">A-Z Sport</option>
+<option value="promotions">Promotions</option>
+<optgroup label="Quick Links">
+<option value="smsbetting">SMS Betting</option>
+<option value="howtodeposit">How To Deposit</option>
+</optgroup>
+</select>
+</div>
+<div class="SB-hamBurger-menu" onclick='loadSideMenu(true)'>
+<div class="SB-hamBurger-bar one"></div>
+<div class="SB-hamBurger-bar two"></div>
+ <div class="SB-hamBurger-bar three"></div>
+</div>
+<div class="SB-mainHeader-logo" >
+<H5 style="color: red ;">WINBETAGENDA</H5>
+</div>
+</div>
+<div class="SB-mainHeader-middleSection SB-hide-mobile SB-show-desktop">
+<ul style="color: #009578;">
+<li class="SB-sports">
+<a href="index.html" target="" class="SB-mainHeader-item" style="color: green;">
+<div>Sports</div>
+</a>
+</li>
+<li class="SB-">
+<a href="register#" target="" class="SB-mainHeader-item" style="color: green;">
+<div>Live Now</div>
+</a>
+</li>
+<li class="SB-">
+<a href="register#" target="" class="SB-mainHeader-item" style="color: green;">
+<div class='SB-new-badge'>New</div>
+<div>Jackpot</div>
+</a>
+</li>
+<li class="SB-">
+<a href="register#" target="" class="SB-mainHeader-item" style="color: green;">
+<div class='SB-new-badge'>New</div>
+<div>Virtual</div>
+</a>
+</li>
+<li class="SB-">
+<a href="register#" target="" class="SB-mainHeader-item" style="color: green;">
+<div>App</div>
+</a>
+</li>
+<li class="SB-">
+<a href="register#" target="" class="SB-mainHeader-item" style="color: green;">
+<div>Casino</div>
+</a>
+</li>
+</ul>
+</div>
+<div class="SB-mainHeader-rightSection">
+<div class="SB-mainHeader-beforeLogin">
+<div class="SB-mainHeader-loginRegister SB-loginRegister-mobile">
+
+<a href="mybets"><button class="btn SB-login SB-btnSmall" style="color: #009578;">Login</button></a>
+<a href="register"><button class="btn SB-register SB-btnSmall" style="color: #009578;">Register</button></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="SB-container" style="background-color: rgb(3, 2, 33);color: #009578;">
+<div class="SB-searchContainer" id="SB-searchBoxContainer" style="display:none;">
+<div class="SB-search">
+<form>
+<div class="SB-serachBox">
+<div class="SB-form-control">
+<input type="text" id="txtSearch" placeholder="Search for Teams, Events and Leagues" onkeyup="return searchValidation()">
+
+</div>
+<button class="SB-searchbtn" id="disableSearchButtonClick" onclick="getSearchClick(); return false;">
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<path d="M17.2,15.1h-1.1l-0.4-0.4c1.3-1.6,2.2-3.6,2.2-5.8C17.9,4,13.9,0,9,0C4,0,0,4,0,8.9s4,8.9,8.9,8.9c2.2,0,4.2-0.8,5.8-2.2
+                                l0.4,0.4v1.1L22,24l2-2L17.2,15.1z M8.9,15.1c-3.4,0-6.2-2.8-6.2-6.2s2.8-6.2,6.2-6.2s6.2,2.8,6.2,6.2S12.3,15.1,8.9,15.1z"></path>
+</svg>
+</button>
+<div class="SB-searchBtnClose" onclick="disableSearch()">
+<img src="register#">
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="SB-subHeader SB-scrollableArea SB-horizontal SB-show-mobile SB-hide-desktop" style="background-color: rgb(7, 5, 61);color: #009578;">
+<div class="SB-container" >
+<div class="SB-subHeader-container">
+<ul>
+<li class="SB-sports">
+<a href="register#" target="" class="SB-subHeader-item">
+<div class="SB-iconSVG SB-icon-football">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<path d="M3.5,5.8L5.6,7l1.9-0.9L8,3.9L6.2,1.9l0.2-0.4C5.1,1.7,3.8,2.2,2.8,3.1l0.4,0.1L3.5,5.8z M10.4,2.4l0-0.3l-0.1,0
+                                    C10.1,2,9.9,1.9,9.7,1.8l-0.1,0h0C9.2,1.7,8.7,1.5,8.2,1.5h0c-0.2,0-0.5,0-0.7,0h0L7.3,1.8l1.4,1.4L10.4,2.4z M1.1,11.1l2.7,0.4
+                                    l1.6-1.7L5.2,7.7L3.1,6.5L0.6,7.7L0.3,7.3v0c-0.3,1.5-0.1,3,0.6,4.4L1.1,11.1z M2.6,5.8l-0.2-2L2.1,3.8l0,0C1.9,4,1.7,4.1,1.6,4.3
+                                    L1.5,4.4C1.4,4.6,1.3,4.8,1.2,4.9C1.1,5.1,1,5.3,0.9,5.5L0.8,5.7C0.7,5.9,0.6,6.1,0.6,6.3v0.1l0.3,0.3L2.6,5.8z M0.2,18.3
+                                    C0.5,18.5,0.7,18.7,1,19s0.8,0.7,1.2,1.1v-3.6c-0.5,0.4-0.9,0.8-1.2,1.1C0.7,17.9,0.5,18.1,0.2,18.3z M13.5,8.1
+                                    c0.3-0.2,0.6-0.4,1-0.5c0-0.1,0-0.2-0.1-0.4c0-0.1,0-0.1,0-0.2c0-0.1-0.1-0.3-0.1-0.4c0-0.1,0-0.1-0.1-0.2c0-0.1-0.1-0.2-0.1-0.3
+                                    C14.1,6,14,6,14,5.9c0-0.1-0.1-0.2-0.1-0.2l-0.3,0l-0.8,1.8L13.5,8.1z M6,7.7l0.2,2l2,0.4l1-1.7L7.8,6.9L6,7.7z M8.8,4.1L8.4,6.2
+                                    l1.4,1.6L12,7.2l1.1-2.5l0.3,0h0c-0.5-0.9-1.3-1.6-2.1-2.2l0,0.3L8.8,4.1z M10.1,13.3c0.2-1.6,1-3,2.1-4.1c0.2-0.2,0.4-0.4,0.6-0.6
+                                    L12.2,8L10,8.6l-1,1.9l0.8,2.8L10.1,13.3z M3.9,14.3l-0.3-2l-2-0.3l-0.3,0.5c0.1,0.1,0.2,0.2,0.2,0.3s0.1,0.1,0.1,0.2h0
+                                    c0.2,0.2,0.3,0.4,0.5,0.6c0.2,0.2,0.4,0.4,0.6,0.5c0.1,0.1,0.1,0.1,0.2,0.2c0.1,0.1,0.2,0.2,0.3,0.2L3.9,14.3z M17.9,18.2l0.3,0.3
+                                    L17.9,18.2L17.9,18.2z M23.7,13.2L23.7,13.2c0-0.1,0-0.2,0-0.3c0-0.1,0-0.2-0.1-0.3c0-0.1,0-0.1-0.1-0.2c0-0.1-0.1-0.2-0.1-0.3
+                                    l-0.1-0.2c0-0.1-0.1-0.2-0.1-0.3l-0.1-0.2c0-0.1-0.1-0.2-0.1-0.3L22.9,11c-0.1-0.1-0.1-0.2-0.2-0.3l-0.1-0.2
+                                    c-0.1-0.1-0.1-0.2-0.2-0.3l-0.1-0.1c-0.1-0.1-0.2-0.3-0.4-0.4c-0.1-0.1-0.3-0.2-0.4-0.4l-0.1-0.1c-0.1-0.1-0.2-0.1-0.3-0.2L21,9
+                                    l-0.3-0.2l-0.2-0.1l-0.3-0.1L20,8.5l-0.3-0.1l-0.2-0.1l-0.3-0.1L19,8.1L18.7,8l-0.2,0h-0.1h0c-0.1,1.4,0.4,2.8,1.4,3.8
+                                    C20.9,12.8,22.3,13.3,23.7,13.2L23.7,13.2z M10.9,13.4c0.8,0.1,1.6,0.3,2.4,0.6v0l0.6,0.3c0.6,0.3,1.2,0.6,1.8,1l0.2,0.1
+                                    c0.6,0.5,1.2,1,1.8,1.6c0.3,0.3,0.6,0.5,0.8,0.7c0.2,0.1,0.3,0.4,0.3,0.6s-0.1,0.5-0.3,0.6c-0.3,0.2-0.6,0.5-0.8,0.7
+                                    c-0.4,0.3-0.8,0.7-1.3,1.1l0.2,0v0c1.8,0.2,3.6-0.4,5-1.6l-9.1-9.2C11.6,11,11.1,12.2,10.9,13.4L10.9,13.4z M23.3,14.1
+                                    c-1.6,0-3.1-0.7-4.2-1.9s-1.6-2.8-1.5-4.4C16,7.8,14.3,8.4,13,9.5l9.2,9.2c1.1-1.3,1.7-2.9,1.6-4.6C23.7,14.1,23.5,14.1,23.3,14.1
+                                    L23.3,14.1z M17.8,18.3c-0.2-0.2-0.5-0.4-0.8-0.7c-0.3-0.3-0.8-0.7-1.2-1.1v3.6c0.5-0.4,0.9-0.8,1.2-1.1
+                                    C17.4,18.7,17.6,18.5,17.8,18.3z M14.6,15.7l-0.2-0.1l-0.2-0.1l-0.1,0v5.9l0.1-0.1l0.2-0.1l0.2-0.1l0.2-0.1l0.1-0.1v-4.9l-0.1-0.1
+                                    L14.6,15.7z M3.6,15.5l-0.2,0.1l-0.2,0.1l-0.1,0.1l0,4.9l0.1,0.1L3.4,21l0.2,0.1l0.2,0.1l0.1,0v-5.9l-0.1,0.1L3.6,15.5z M4.8,14
+                                    c1.3-0.5,2.7-0.8,4.1-0.8l-0.7-2.3L6,10.5l-1.6,1.7L4.7,14L4.8,14L4.8,14z M4.8,14.9v6.8c1.3,0.6,2.8,0.9,4.2,0.8
+                                    c1.5,0,2.9-0.3,4.2-0.8v-6.8c-1.3-0.6-2.8-0.9-4.2-0.8C7.6,14.1,6.2,14.4,4.8,14.9z M9.5,17.1v0.8h0.8v-0.8c0-0.2,0.2-0.4,0.4-0.4
+                                    c0.2,0,0.4,0.2,0.4,0.4v0.8h0.4c0.2,0,0.4,0.2,0.4,0.4s-0.2,0.4-0.4,0.4h-0.4v0.8c0,0.2-0.2,0.4-0.4,0.4c-0.2,0-0.4-0.2-0.4-0.4
+                                    v-0.8H9.5v0.8C9.5,19.8,9.3,20,9,20c-0.2,0-0.4-0.2-0.4-0.4v-0.8H7.8v0.8c0,0.2-0.2,0.4-0.4,0.4s-0.4-0.2-0.4-0.4v-0.8H6.5
+                                    c-0.2,0-0.4-0.2-0.4-0.4s0.2-0.4,0.4-0.4h0.4v-0.8c0-0.2,0.2-0.4,0.4-0.4s0.4,0.2,0.4,0.4v0.8h0.8v-0.8c0-0.2,0.2-0.4,0.4-0.4
+                                    C9.3,16.6,9.5,16.8,9.5,17.1z"></path>
+</svg>
+</div>
+<div>Sports</div>
+</a>
+</li>
+<li class="SB-liveNow">
+<a href="register#" target="" class="SB-subHeader-item">
+<div class="SB-iconSVG SB-icon-live">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<path d="M24.2,12c0,3.8-1.8,7.3-4.7,9.6l-0.7-0.9c2.7-2.1,4.3-5.2,4.3-8.7c0-3.4-1.6-6.6-4.3-8.7l0.7-0.9C22.4,4.7,24.2,8.2,24.2,12
+                                    L24.2,12z M9.6,8.7l6.5,3.5l-6.5,3.5L9.6,8.7L9.6,8.7z M20.4,12c0,2.9-1.5,5.6-4,7.1l-0.6-1c2.1-1.3,3.4-3.6,3.4-6.1
+                                    s-1.3-4.8-3.4-6.1l0.6-1C18.8,6.4,20.4,9.1,20.4,12L20.4,12z M3.6,12c0-2.9,1.5-5.6,4-7.1l0.6,1C6.1,7.2,4.8,9.5,4.8,12
+                                    c0,2.5,1.3,4.8,3.4,6.1l-0.6,1C5.2,17.6,3.6,14.9,3.6,12L3.6,12z M-0.2,12c0-3.8,1.8-7.3,4.7-9.6l0.7,0.9C2.6,5.4,1,8.6,1,12
+                                    c0,3.4,1.6,6.6,4.3,8.7l-0.7,0.9C1.6,19.3-0.2,15.8-0.2,12L-0.2,12z"></path>
+</svg>
+</div>
+<div>Live Now</div>
+</a>
+</li>
+<li class="SB-jackpot">
+<a href="register#" target="" class="SB-subHeader-item">
+<div class="SB-iconSVG">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18" id="UII_Toto">
+<path d="M1.07 8.04l1.27-.63.3-7.36L1.52 0C.94-.02.45.43.42 1.02L.2 6.95a1.1 1.1 0 00.28.76c.16.17.37.28.6.32zM6.9 5L5.74 3.76c-.05-.05-.06-.12-.04-.18s.08-.1.15-.1l1.7-.18c.06-.01.1-.04.14-.1l.8-1.5c.03-.06.1-.1.16-.1s.13.04.15.1l.7 1.56c.02.05.07.1.13.1l.6.1 3.2-1.6.06-1.4L3.92.1l-.26 6.65 3.3-1.64c0-.04-.02-.08-.04-.1zM15.85.94c.32 0 .62.07.9.18-.17-.3-.5-.53-.88-.55l-1.1-.04-.03.7.07-.03c.32-.16.68-.25 1.04-.25zM.6 9.73c-.25.13-.44.35-.53.6s-.07.56.05.8l3.1 6.26c.18.37.56.6.95.6.16 0 .32-.04.47-.1l1.32-.66L1.9 9.07l-1.3.66zm19.3-.63l-3.1-6.26c-.18-.37-.56-.6-.95-.6-.16 0-.32.04-.47.1L14.06 3l4.03 8.16 1.32-.66c.25-.13.44-.35.53-.6s.07-.56-.05-.8zM3.06 8.5l4.03 8.16 9.84-4.9L12.9 3.6 3.06 8.5zm10.14 3.54c-.03.06-.1.1-.16.1l-1.98-.05c-.06 0-.1.03-.15.07l-1.16 1.6c-.04.05-.1.08-.17.07s-.12-.06-.14-.12l-.57-1.9a.205.205 0 00-.1-.12l-1.88-.6c-.06-.02-.1-.08-.12-.14s.02-.13.07-.17l1.63-1.13c.05-.03.08-.1.08-.15v-2c0-.07.04-.13.1-.16s.13-.02.18.02l1.57 1.2c.05.04.1.05.16.03l1.88-.62c.06-.02.13 0 .18.04s.06.12.04.18l-.7 1.97 1.22 1.68c.04.06.05.13.02.2z">
+</path>
+</svg>
+</div>
+<div class='SB-new-badge'>New</div>
+<div>Jackpot</div>
+</a>
+
+<li class="SB-App">
+<a href="https://play.google.com/store/apps/details?id=live.pesabet.pesabet" target="" class="SB-subHeader-item">
+<div class="SB-iconSVG SB-icon-app">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 339 535" style="enable-background:new 0 0 339 535;" xml:space="preserve">
+<path class="st0" d="M334.5,39.4c0-22.8-19.2-39.4-42.9-39.4H48.4C23.9,0,5.5,17.5,5.5,39.4v38.5h329.9
+							C334.5,65.6,334.5,53.4,334.5,39.4L334.5,39.4z M38.8,430.5H5.5v-329h33.2V430.5z M334.5,430.5h-33.2v-329h33.2V430.5z M334.5,454.1
+							H5.5v32.4c0,28.9,16.6,45.5,47.2,45.5h234.5c30.6,0,47.2-16.6,47.2-45.5V454.1z M215.5,498.7c0,3.5-3.5,6.1-7,6.1h-77.9
+							c-3.5,0-7-2.6-7-6.1v-11.4c0-3.5,3.5-6.1,7-6.1h77.9c3.5,0,7,2.6,7,6.1V498.7z M191,167.1V182h-42v-14.9l3.5-3.5h35.9
+							C189.2,164.5,190.1,165.4,191,167.1z M189.2,217h-37.6c-0.9,0-2.6-0.9-2.6-2.6v-16.6c0-0.9,0.9-2.6,2.6-2.6h37.6
+							c0.9,0,2.6,0.9,2.6,2.6v16.6C191,215.2,190.1,217,189.2,217z M255.8,285.2l-69.1,76.1c-4.4,4.4-10.5,7-16.6,7s-12.2-2.6-16.6-7
+							l-69.1-76.1c-7-7.9-6.1-20.1,3.5-26.2c8.8-6.1,22.8-5.2,29.8,2.6l31.5,35v-55.1c0-6.1,4.4-10.5,10.5-10.5h21
+							c6.1,0,10.5,4.4,10.5,10.5v55.1l31.5-35c4.4-4.4,10.5-7,16.6-7c4.4,0,9.6,1.8,13.1,4.4C261,265.1,262.8,276.5,255.8,285.2z"></path>
+</svg>
+</div>
+<div>App</div>
+</a>
+</li>
+</li>
+<li class="SB-vLeague">
+<a href="register#" target="" class="SB-subHeader-item">
+<div class="SB-iconSVG SB-icon-virtualLeague">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" style="enable-background:new 0 0 20 20;" xml:space="preserve">
+<path d="M18.1,11h-2.2c-1,0-1.8,0.9-1.8,1.9v3.8c0,1.7,1.2,3.1,2.9,3.1c1.6,0,2.9-1.4,2.9-3.1v-3.8C19.8,11.9,19.1,11,18.1,11z
+                                    M18.8,16.7c0,1.2-0.9,2.1-1.9,2.1c-1,0-1.9-0.9-1.9-2.1v-3.8c0-0.5,0.4-0.9,0.8-0.9h2.2c0.4,0,0.8,0.4,0.8,0.9V16.7z M12.7,16.8
+                                   c0,0.5-0.4,0.9-0.8,0.9H6.3c-0.4,0-0.8-0.4-0.8-0.9c0-0.5,0.4-0.9,0.8-0.9h1.6v-1.5H2.6c-1.4,0-2.5-1.3-2.5-2.6V2.8
+                                   c0-1.4,1-2.6,2.5-2.6h13C17,0.2,18,1.4,18,2.8v5.3c0,0.6-0.4,1-1,1s-1-0.4-1-1V2.8c0-0.4-0.3-0.6-0.5-0.6h-13
+                                   c-0.2,0-0.5,0.2-0.5,0.6v9.2c0,0.4,0.3,0.6,0.5,0.6h8.8c0.6,0,1,0.4,1,1c0,0.6-0.4,1-1,1h-1.1V16h1.6C12.3,16,12.7,16.4,12.7,16.8z
+                                    M17.7,14.1V15c0,0.5-0.4,0.9-0.8,0.9s-0.8-0.4-0.8-0.9v-0.9c0-0.5,0.4-0.9,0.8-0.9S17.7,13.7,17.7,14.1z"></path>
+</svg>
+</div>
+<div class='SB-new-badge'>New</div>
+<div>Virtual Games</div>
+</a>
+</li>
+
+<li class="SB-Promotions">
+<a href="register#" target="" class="SB-subHeader-item">
+<div class="SB-iconSVG SB-iconPromotion">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<path d="M16,15.9c0,0.6-0.5,1.1-1.1,1.1c-0.6,0-1.1-0.5-1.1-1.1c0-0.6,0.5-1.1,1.1-1.1C15.5,14.8,16,15.3,16,15.9 M10.6,10.6
+                                    c0,0.6-0.5,1.1-1.1,1.1c-0.6,0-1.1-0.5-1.1-1.1c0-0.6,0.5-1.1,1.1-1.1C10.1,9.5,10.6,10,10.6,10.6 M4.5,23.9l7.3-4.4
+                                    c0.1-0.1,0.2-0.1,0.3-0.1c0.1,0,0.1,0,0.2,0.1l7.1,4.4V5.7h-15L4.5,23.9z M14.9,18.1c-1.2,0-2.2-1-2.2-2.2s1-2.2,2.2-2.2
+                                    s2.2,1,2.2,2.2S16.1,18.1,14.9,18.1z M16.5,9c0.2,0.2,0.2,0.6,0,0.8l-7.6,7.6c-0.2,0.2-0.5,0.2-0.7,0l0,0c-0.2-0.2-0.2-0.5,0-0.7
+                                    L15.7,9C15.9,8.8,16.2,8.8,16.5,9L16.5,9z M9.5,8.4c1.2,0,2.2,1,2.2,2.2s-1,2.2-2.2,2.2c-1.2,0-2.2-1-2.2-2.2
+                                    C7.3,9.4,8.3,8.4,9.5,8.4L9.5,8.4z M4.5,0.1h15v4.5h-15V0.1z"></path>
+</svg>
+</div>
+<div>Casino</div>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="SB-container">
+<div class="SB-layout-content">
+<div class="SB-leftSection">
+<div class='SB-leftMenu-mask' id='SB-leftMenu-mask'></div>
+<div class='SB-sideMenu'>
+<div class='SB-sideMenu-main-content'>
+<div class='SB-sideMenu-container'>
+<div class="SB-sideMenu-close-container">
+<div class="SB-sideMenu-close" id="SB-sideMenu-closeButton">
+<i class="SB-icon icon-close"></i>
+</div>
+</div>
+<div class="SB-topHeader d-none">
+<div class="SB-topHeader-middleSection">
+Deposit
+<div class="SB-iconSvg">
+<svg version="1.1" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" xml:space="preserve">
+<path d="M13.6,1.6l-1.8,1.8l7.3,7.3H0v2.6h19l-7.3,7.3l1.8,1.8L24,12L13.6,1.6z" />
+</svg>
+</div> MPESA Paybill: XXXXXX
+</div>
+</div>
+<div class="SB-language-container d-none" id='getLanguageDropdown'>
+<div class="SB-label">Language:</div>
+<div class="SB-select">
+<select id='ddn_languages' onchange='getLanguage()'>
+<option value='pt-PT'>Portuguese</option>
+<option value='en-US'>English</option>
+</select>
+</div>
+</div>
+<div class="SB-sideMenu-tabs" style="background-color: rgb(3, 2, 33);color: #009578;">
+<ul class='sidemenu-tablist' id='Sidemenu_tabs'>
+
+    
+<li class='d-none'><a href='https://www.winbetagenda.live/SB-sideMenu-quickLinks'>Quick links</a></li>
+<li class='active'>
+<a href='https://www.winbetagenda.live/SB-sideMenu-allSports' style="text-decoration: none;">
+<div class="SB-iconSVG SB-iconFootball">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<path d="M12,0C5.4,0,0,5.4,0,12s5.4,12,12,12s12-5.4,12-12S18.6,0,12,0z M19.4,18h-3l-0.8,2.9c-1.1,0.5-2.3,0.7-3.6,0.7
+                                    s-2.5-0.2-3.6-0.7l-0.8-2.8h-3c-1.3-1.7-2.2-3.8-2.2-6.1c0-0.1,0-0.4,0-0.5L5,10L4.2,6.4c1.2-1.7,3-3,5-3.6l2.8,2l2.8-2
+                                    c2,0.6,3.7,1.9,5,3.6L19,10l2.6,1.6c0,0.1,0,0.4,0,0.5C21.6,14.3,20.8,16.4,19.4,18z M12,6.7l5,3.7l-1.9,5.9H8.9l-1.9-6L12,6.7z" />
+</svg>
+</div>
+Sports
+</a>
+</li>
+<li>
+<a id='MyAccount' href='https://www.winbetagenda.live/SB-sideMenu-myAccount' style="text-decoration: none;">
+<div class="SB-iconSVG SB-icon-accountAvatar">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<path d="M12,0C5.4,0,0,5.4,0,12s5.4,12,12,12s12-5.4,12-12S18.6,0,12,0z M12,3.6c2,0,3.6,1.6,3.6,3.6S14,10.8,12,10.8
+                                S8.4,9.2,8.4,7.2S10,3.6,12,3.6z M12,20.6c-3,0-5.7-1.5-7.2-3.9c0-2.4,4.8-3.7,7.2-3.7c2.4,0,7.2,1.3,7.2,3.7
+                                C17.7,19.1,15,20.6,12,20.6z" />
+</svg>
+</div>
+My Account
+</a>
+</li>
+</ul>
+</div>
+<div class='SB-tab-content' >
+ <div id='SB-sideMenu-allSports' class='SB-tab-pane active SB-sideMenu-sports-container'>
+
+<div class='SB-sidePanel SB-accordion SB-sidePanel-topLeagues' style="background-color: rgb(3, 2, 33);color: #009578;">
+<div class='SB-sidePanel-header' id='topleagues_5' onclick="getAccordianLeagues('topleagues_5')" style="background-color: rgb(3, 2, 33);color: #009578;">
+<div class="SB-sidePanel-header-content">Top Leagues</div>
+<div class="SB-accordionArrow-container">
+<div class="SB-accordionArrow">
+</div>
+</div>
+</div>
+<div class='SB-sidePanel-content SB-accordion-content' id="accrd-SideMenu-Topleagues">
+<div class="SB-sidePanelList">
+<div class="SB-sidePanelList-item">
+<a class="SB-sidePanelList-item-content" href="england" style="text-decoration: none;">
+    English Premier League
+</a>
+</div><div class="SB-sidePanelList-item">
+<a class="SB-sidePanelList-item-content"  href="italy" style="text-decoration: none;">
+Italian Serie A
+</a>
+</div><div class="SB-sidePanelList-item">
+<a class="SB-sidePanelList-item-content"  href="englandc" style="text-decoration: none;">
+English Championship
+</a>
+</div><div class="SB-sidePanelList-item">
+<a class="SB-sidePanelList-item-content"  href="germany" style="text-decoration: none;">
+ German Bundesliga
+</a>
+</div><div class="SB-sidePanelList-item">
+<a class="SB-sidePanelList-item-content"  href="spain" style="text-decoration: none;">
+Spanish La liga
+</a>
+</div><div class="SB-sidePanelList-item">
+<a class="SB-sidePanelList-item-content"  href="uefa" style="text-decoration: none;">
+UEFA
+</a>
+</div><div class="SB-sidePanelList-item">
+<a class="SB-sidePanelList-item-content"  href="europa" style="text-decoration: none;">
+Europa League
+</a>
+</div><div class="SB-sidePanelList-item">
+<a class="SB-sidePanelList-item-content"  href="france" style="text-decoration: none;">
+France Ligue 1
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="SB-sidePanel SB-accordion SB-sidePanel-otherLinks" style="background-color: rgb(3, 2, 33);color: #009578;">
+<div class="SB-sidePanel-header" id='otherlinks' onclick="getAccordianLeagues('otherlinks')" style="background-color: rgb(3, 2, 33);color: #009578;">
+<div class="SB-sidePanel-header-content" >Other Links</div>
+<div class="SB-accordionArrow-container">
+<div class="SB-accordionArrow" id='otherlinks_1' onclick="getAccordianLeagues('otherlinks_1')"></div>
+</div>
+</div>
+<div class="SB-sidePanel-content SB-accordion-content">
+<div class="SB-sidePanelList">
+<div class='SB-sidePanelList-item'>
+<div class="SB-sidePanelList-item-content">
+    <a href='games' target=''>Responsible Gaming</a>
+</div>
+</div>
+<div class='SB-sidePanelList-item'>
+<div class="SB-sidePanelList-item-content">
+<a href='rules' target=''>Betting Rules</a>
+</div>
+</div>
+<div class='SB-sidePanelList-item'>
+<div class="SB-sidePanelList-item-content">
+<a href='privacy' target=''>Privacy Policy</a>
+</div>
+</div>
+<div class='SB-sidePanelList-item'>
+<div class="SB-sidePanelList-item-content">
+<a href='cookies' target=''>Cookies Policy</a>
+</div>
+</div>
+<div class='SB-sidePanelList-item'>
+<div class="SB-sidePanelList-item-content">
+<a href='jackpot' target=''>Jackpot Rules</a>
+</div>
+</div>
+
+<div class='SB-sidePanelList-item'>
+<div class="SB-sidePanelList-item-content">
+<a href='terms' target=''>Terms and Conditions</a>
+</div>
+</div>
+
+<div class='SB-sidePanelList-item'>
+<div class="SB-sidePanelList-item-content">
+<a href='gaming/contact' target=''>Contact us</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SB-sideMenu-myAccount" class="SB-tab-pane SB-sideMenu-myAccount-container">
+<div class="SB-myAccount-beforeLogin-container">
+<div class="text-center">Please login to view your Account</div>
+<a href="mybets">
+<button class="btn SB-btnSecondary active SB-btnMedium SB-btnLogin">Sign
+in</button>
+</a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="SB-mainSection">
+    <div class="SB-mainSection-container">
+    
+    <div class='SB-loginRegister SB-login' style="background-color: rgb(3, 2, 33);margin: 10px;border-radius: 15px;padding: 20px;padding-top: 30px;">
+       
+        <div class="SB-content">
+        <form action="register" method="post">
+    
+            <input type="hidden" name="csrfmiddlewaretoken" value="oYNJWCkCj27nzg9sn5CN5ntnyDUj0efligR47w4hDYhZdqY07MCIDEmvVA97HOdH">
+       
+        <div class='SB-form-group'>
+        <div class='SB-form-label' style="color: #009578;">Enter Mobile Number:<span class="SB-form-errorMsg">*</span></div>
+        <div class='SB-form-control-group'>
+       
+        <div class="SB-form-control">
+        <input type='number'  name="phone" value="" placeholder='07xxxx' style="padding: 22px;" maxlength='15' required autocomplete="off" />
+        </div>
+        </div>
+        <div class="SB-form-errorMsg">
+        <span id='loginErrorMessage'>   </span>
+        </div>
+        </div>
+        <div class='SB-form-group'>
+        <div class='SB-form-label' style="color: #009578;">Enter Password:<span class="SB-form-errorMsg">*</span></div>
+        <div class="SB-form-control-group SB-form-control-password">
+        <div class="SB-form-control" SB-form-control-pin>
+        <input style="padding: 22px;" value="" type='password' name="password" placeholder='xxxxx' maxLength='20' required />
+        </div>
+       
+        </div>
+    
+        <div class='SB-form-group'>
+            <div class='SB-form-label' style="color: #009578;">Confirm Password:<span class="SB-form-errorMsg">*</span></div>
+            <div class="SB-form-control-group SB-form-control-password">
+            <div class="SB-form-control" SB-form-control-pin>
+            <input style="padding: 22px;" value="" type='password' name="password1" placeholder='xxxxx' maxLength='20' required />
+            </div>
+           
+            </div>
+            </div>
+        <div class="SB-form-errorMsg">
+        <span id='displayErrorMessage'> </span>
+        </div>
+        </div>
+        <div class="SB-space10"></div>
+        <button class='btn SB-btnSecondary active SB-btnLarge' id="disableLoginButtonClick" onclick='return gotoLogin();'><span class='SB-btnTxt'>Register</span></button>
+        <div class="SB-form-errorMsg">
+        <span id='errorMessageClass'></span>
+        <span id='errorMessagePassClass'></span>
+        </div>
+       
+        <div class="SB-space20"></div>
+        <div class='SB-loginRegister-navigation' style="color: #009578;">
+       Already have an account?
+        <a href='mybets'>
+        <span class='SB-txtHightlight' style="color: white;text-decoration: none;" >Login</span>
+        </a>
+        </div>
+        <div class="SB-space20"></div>
+        </form>
+        </div>
+        </div>
+        
+   </script><script src="static/js/g.min.js"></script>
+    
+    
+    
+    
+    
+    <script>
+        const urlsearchParam = new URLSearchParams(window.location.search);
+        if (urlsearchParam.has('q')) {
+            var homeContent = document.querySelector('.SB-homeTabs-content');
+            if (homeContent != null) {
+                homeContent.classList.add('d-none');
+            }
+        }
+        splideCarousel.superBannerCarousel();
+        splideCarousel.populatMatchCarousel();
+        var maincourouselListItems = document.querySelectorAll('.SB-mainHeader-middleSection SB-hide-mobile SB-show-desktop li');
+        for (var i = 0; i < maincourouselListItems.length; i++) {
+            maincourouselListItems[i].classList.remove('active');
+        }
+    
+        var desktoplitags = document.getElementsByClassName("SB-mainHeader-item")
+        if (desktoplitags !== null) {
+            for (var i = 0; i < desktoplitags.length; i++) {
+                desktoplitags[i].parentElement.classList.remove('active');
+            }
+        }
+        var desktoplitagsall = document.getElementsByClassName("SB-mainHeader-item")
+        if (desktoplitagsall !== null) {
+            for (var i = 0; i < desktoplitagsall.length; i++) {
+                if (desktoplitagsall[i].href.toLowerCase().indexOf("upcoming") >= 0) {
+                    desktoplitagsall[i].parentElement.classList.add('active');
+                } else {
+                    desktoplitagsall[i].parentElement.classList.remove('active');
+                }
+            }
+        }
+    
+        var mobilelitagsall = document.getElementsByClassName("SB-subHeader-item")
+        if (mobilelitagsall !== null) {
+            for (var i = 0; i < mobilelitagsall.length; i++) {
+                mobilelitagsall[i].parentElement.classList.remove('active');
+            }
+        }
+    
+        var sportslitags = document.getElementsByClassName("SB-sports")
+        if (sportslitags !== null) {
+            for (var i = 0; i < sportslitags.length; i++) {           
+                    sportslitags[i].classList.add('active');           
+            }
+        }
+        //document.getElementsByClassName("SB-sports")[0].classList.add('active');
+        //document.getElementsByClassName("SB-liveNow")[0].classList.remove('active');
+        //document.getElementsByClassName("SB-sportPage")[1].classList.add('active');
+    
+        if ("Today" != "" || "Today" != null) {
+            HomeupcomingDayTimefilterCSS("Today");
+        }
+    
+    </script>
+    <div class="SB-chatBubble SB-hide-mobile SB-show-desktop">
+    <div class="SB-chatBubble-container"  >
+    <div class="SB-iconSVG SB-iconChat">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+    <path class="st0" d="M7,14h11.1c1.2,0,2.3-1,2.3-2.3V5c0-1.2-1-2.3-2.3-2.3H2.3C1.1,2.7,0,3.8,0,5v6.7C0,13,1.1,14,2.3,14
+                            c0.2,0,0.4,0.2,0.4,0.4v3.7l3.9-3.9C6.7,14.1,6.9,14,7,14L7,14z M15.8,6.7c1,0,1.8,0.8,1.8,1.8c0,1-0.8,1.8-1.8,1.8
+                            c-1,0-1.8-0.8-1.8-1.8C14,7.4,14.8,6.7,15.8,6.7z M10.2,6.7c1,0,1.8,0.8,1.8,1.8c0,1-0.8,1.8-1.8,1.8c-1,0-1.8-0.8-1.8-1.8
+                            C8.5,7.4,9.2,6.7,10.2,6.7z M4.6,10.1c-1,0-1.8-0.8-1.8-1.8c0-1,0.8-1.8,1.8-1.8c1,0,1.8,0.8,1.8,1.8C6.4,9.3,5.6,10.1,4.6,10.1z
+                            M21.7,5.9h-0.5v5.9c0,1.7-1.4,3.1-3.1,3.1h-11L5,17c0.3,0.1,0.6,0.2,0.9,0.2H17c0.1,0,0.2,0.1,0.3,0.1l3.9,3.9l0-3.6
+                            c0-0.2,0.2-0.4,0.4-0.4c1.2,0,2.3-1,2.3-2.3l0-6.8C23.9,6.9,22.9,5.9,21.7,5.9L21.7,5.9z"></path>
+    </svg>
+    </div>
+    <div class="SB-loader d-none">
+    <div class="SB-loaderSVGIcon" title="2">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+    <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+    <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform>
+    </path>
+    </svg>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    
+    
+
+<div class="SB-rightSection">
+<div class="SB-rightMenu" id="betslipDisplay">
+</div>
+<div class="SB-rightMenu-banners-container">
+<div class="SB-betslipBanner">
+<div class="splide SB-splide-betslipBanner">
+<div class="splide__track">
+<ul class="splide__list">
+<li class="splide__slide">
+<div class="SB-betslipBanner-item">
+<a href="register#">
+<div class="SB-independentBanner-item_ke"><img src="static/images/major.jpg" asp-append-version="true"></div>
+</a>
+</div>
+</li>
+<li class="splide__slide">
+<div class="SB-betslipBanner-item">
+<a href="register#">
+<div class="SB-independentBanner-item_ke"><img src="static/images/major.jpg" asp-append-version="true"></div>
+</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="SB-betslipBanner d-none">
+<div class="splide SB-splide-betslipBanner">
+<div class="splide__track">
+<ul class="splide__list">
+<li class="splide__slide">
+<div class="SB-betslipBanner-item">
+<a href="https://www.pesabet.live/promotions/welcome-offer">
+<div class="SB-independentBanner-item_ke"></div>
+</a>
+</div>
+</li>
+<li class="splide__slide">
+<div class="SB-betslipBanner-item">
+<a href="https://sh-mobileapp.sportsit-tech.net/KE/app-release-1.apk?ct=38">
+<div class="SB-independentBanner-item_ke"></div>
+</a>
+</div>
+</li>
+<li class="splide__slide">
+<div class="SB-betslipBanner-item">
+<a href="https://www.winbetagenda.live/promotions/multi-boost">
+<div class="SB-independentBanner-item_ke"></div>
+</a>
+</div>
+</li>
+<li class="splide__slide">
+<div class="SB-betslipBanner-item">
+<a href="https://www.winbetagenda.live/Cashout">
+<div class="SB-independentBanner-item_ke"></div>
+</a>
+</div>
+</li>
+<li class="splide__slide">
+<div class="SB-betslipBanner-item">
+<a href="https://www.winbetagenda.live/soccer/English%20Premier%20League">
+<div class="SB-independentBanner-item_ke"></div>
+</a>
+</div>
+</li>
+<li class="splide__slide">
+<div class="SB-betslipBanner-item">
+<a href="https://www.winbetagenda.live/Help/Contactus?ct=158">
+<div class="SB-independentBanner-item_ke"></div>
+</a>
+</div>
+</li>
+<li class="splide__slide">
+<div class="SB-betslipBanner-item">
+<a href="https://www.winbetagenda.live/Jackpot/Home">
+<div class="SB-independentBanner-item_ke"></div>
+</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="SB-footer" style="background-color: rgb(3, 2, 33);color: #009578;">
+<div class="SB-container">
+<div class="SB-footer-container">
+<div class="SB-footer-logo">
+    <H5 style="color: orange ;">WINBETAGENDA</H5>
+</div>
+<div class="SB-divider"></div>
+<div class="SB-footer-linksList">
+    <ul>
+        <li>
+        <a href="games" >Responsible Gamings</a>
+        </li> <li>
+        <a href="rules" >Betting Rules</a>
+        </li> <li>
+        <a href="privacy" >Privacy Policy</a>
+        </li> <li>
+        <a href="cookies" target="">Cookies Policy</a>
+        </li> <li>
+        <a href="jackpot" target="">Jackpot Rules</a>
+        </li>  <li>
+        <a href="terms" target="">Terms and Conditions</a>
+        </li> <li>
+        <a href="faq" target="">FAQs</a>
+        </li> <li>
+        <a href="gaming/contact" target="">Contact us</a>
+        </li>
+        </ul>
+</div>
+<div class="SB-footer-logoList d-none">
+<ul>
+<li>
+PESABET
+</li>
+<li>
+Restricted to <img src="https://www.winbetagenda.live/images/footer/18+.svg" />
+</li>
+</ul>
+</div>
+<div class="SB-divider"></div>
+<p>
+<div class="SB-footer-license">
+<p>
+    <a href="index.html" target="_blank">WINBETAGENDA</a> is operated by SMART GAMINGS LIMITED and is regulated by Betting Control and Licensing Board of Kenya (BCLB). Licence number 0000513
+</p>
+<p>
+By continuing to use the site you accept our cookie policy.
+</p>
+<p>
+Gambling can be harmful unless controlled. See our Responsible Gaming page for more details and the responsible gaming tools available.
+</p>
+<p>
+This platform is strictly open to persons over the age of 18. Play responsibly.
+</p>
+
+</div>
+</p>
+<p>
+</p>
+</div></div>
+</div>
+<div class="SB-quickBetslip-footer">
+<div class="SB-maxBetsAdded-errorInfo d-none">
+<div class="SB-iconSVG">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<path d="M12,2.5l-11,19h22L12,2.5z M12,6.5l7.5,13H4.5L12,6.5z M13,10.5v4h-2v-4H13z M11,16.5h2v2h-2V16.5z"></path>
+</svg>
+</div>
+<div></div>
+</div>
+<div class="SB-bonusInfo-footer">
+<div class="SB-bonusInfo-footer-container" id="bonusBetMessage">
+</div>
+<div class="SB-hr"></div>
+</div>
+<div class="SB-quickBetslip-footer-container">
+<div class="SB-quickBetslip-totalOdds" id="oddsMessage"></div>
+<div class="SB-quickBetslip-totalPayout" id="toWinMessage"></div>
+</div>
+</div>
+<div class='SB-mobile-footer' style="background-color: rgb(2, 2, 20);color: #009578;">
+<ul class="footerItemsDisplayListWithOutLogin">
+<li onclick="highlightFooterTabWoLogin(event,this.getAttribute('data-footer-myaccount'))" data-footer-myaccount="My Account">
+<a href="javascript:void(0);" target="">
+<div class="SB-iconSVG SB-icon-accountAvatar">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<path d="M12,0C5.4,0,0,5.4,0,12s5.4,12,12,12s12-5.4,12-12S18.6,0,12,0z M12,3.6c2,0,3.6,1.6,3.6,3.6S14,10.8,12,10.8
+                                S8.4,9.2,8.4,7.2S10,3.6,12,3.6z M12,20.6c-3,0-5.7-1.5-7.2-3.9c0-2.4,4.8-3.7,7.2-3.7c2.4,0,7.2,1.3,7.2,3.7
+                                C17.7,19.1,15,20.6,12,20.6z"></path>
+</svg>
+</div>
+<div>My Account</div>
+</a>
+</li>
+
+<li id='BLM-betSlip-Button' class='SB-betslip SB-betSlip-active' onclick="highlightFooterTabWoLogin(event,this.getAttribute('data-footer-betslip')); openHiddenBetSlip();" data-footer-betslip="BetSlip">
+<a href="javascript:void(0);" target="">
+<div class="SB-betslip-container ">
+<img src="static/images/betslip.svg">
+<span class="SB-bets-count" id="getBetsCountDisplay" data-footer-betslip="Betslip"></span>
+</div>
+<div>BetSlip</div>
+<span class='BLM-bets-count' id='getBetsCountDisplay' data-footer-betslip='Betslip'></span>
+</a>
+</li>
+<li onclick="highlightFooterTabWoLogin(event,this.getAttribute('data-footer-mybets'))" data-footer-mybets="MyBets">
+<a href="gaming/mybets" target="">
+<div class="SB-iconSVG SB-iconMyBets">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<path d="M20.9,1.9l-1.8-1.8l-1.8,1.8l-1.8-1.8l-1.8,1.8L12,0.1l-1.8,1.8L8.4,0.1L6.7,1.9L4.9,0.1v16.6H1.3v3.6c0,2,1.6,3.6,3.6,3.6
+                       h14.2c2,0,3.6-1.6,3.6-3.6V0.1L20.9,1.9z M20.3,20.3c0,0.7-0.5,1.2-1.2,1.2s-1.2-0.5-1.2-1.2v-3.6H7.3v-13h13.1v16.6H20.3z M8.4,6.1
+                       h7.1v2.4H8.4V6.1z M16.7,6.1h2.4v2.4h-2.4V6.1z M8.4,9.6h7.1V12H8.4V9.6z M16.7,9.6h2.4V12h-2.4V9.6z"></path>
+</svg>
+</div>
+<div>MyBets</div>
+<span class='BLM-bets-count d-none' id='getUserBetsCountDisplay' data-footer-mybets='My Bets'></span>
+</a>
+</li>
+
+</ul>
+</div>
+</div>
+<script>
+        let a2zSports = document.getElementsByClassName('SB-sidePanel-allSports')[0];
+        let allCountries = document.getElementsByClassName('SB-sidePanel-allCountries')[0];
+        a2zSports.after(allCountries);
+        if (document.getElementsByClassName('SB-flag 99999')[0] !== undefined) {
+            document.getElementsByClassName('SB-flag 99999')[0].classList.add('ol');
+            document.getElementsByClassName('SB-flag 99999')[0].classList.remove('99999');
+        }
+
+    </script>
+
+
+
+
+<script src="static/js/sports.js"></script>
+
+<script src="static/js/global.js"></script>
+
+
+<script src="static/js/index80.min.js"></script>
+
+
+
+<script src="static/js/side.min.js"></script>
+
+
+
+<script src="static/js/event.min.js"></script>
+
+
+
+<script src="static/js/third.min.js"></script>
+
+<script src="static/js/navigation.min.js"></script>
+
+
+<script src="static/js/homepage1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+{% endblock content %}
